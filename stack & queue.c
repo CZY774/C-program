@@ -120,6 +120,7 @@ int stacckk()
         printf("5.Exit\n");
         printf("\nInput pilihan:");
         scanf("%d",&choice);
+        fflush(stdin);
         switch(choice)
         {
             case 1:
@@ -134,12 +135,16 @@ int stacckk()
             case 4:
                 if(stack_isEmpty())
                 {
-                    printf("Data masih kosong!,tidak bisa reset\n");
+                    printf("\nData masih kosong!,tidak bisa reset\n");
+                    system("pause");
+                    system("cls");
                 }
                 else
                 {
-                inisialisasi_stack();
-                printf("Data telah di reset!\n");
+                    inisialisasi_stack();
+                    printf("\nData telah di reset!\n");
+                    system("pause");
+                    system("cls");
                 }
                 break;
             case 5:
@@ -224,6 +229,8 @@ int dequeue()
         int i;
         int e = antrian.data[antrian.head];
         printf("\nData %d telah dikeluarkan dari antiran\n",antrian.data[antrian.head]);
+        system("pause");
+        system("cls");
         for(i=antrian.head;i<=antrian.tail-1;i++)
         {
             antrian.data[i] = antrian.data[i+1];
@@ -235,8 +242,20 @@ int dequeue()
 
 void clear()
 {
-    antrian.head = antrian.tail = -1;
-    printf("Data telah di reset!\n");
+    if(queue_isEmpty())
+    {
+        printf("\nData masih kosong!,tidak bisa reset\n");
+        system("pause");
+        system("cls");
+    }
+    else
+    {
+        inisialisasi_stack();
+        antrian.head = antrian.tail = -1;
+        printf("\nData telah di reset!\n");
+        system("pause");
+        system("cls");
+    }
 }
 
 void print()
@@ -275,6 +294,7 @@ int queuuee()
         printf("5.Exit\n");
         printf("\nInput pilihan:");
         scanf("%d",&choice);
+        fflush(stdin);
         switch(choice)
         {
             case 1:
@@ -298,7 +318,6 @@ int queuuee()
                 break;
             case 3:
                 print();
-                printf("\n");
                 break;
             case 4:
                 clear();
@@ -431,3 +450,4 @@ int main()
 		printf("================================");
 	}
 }
+
